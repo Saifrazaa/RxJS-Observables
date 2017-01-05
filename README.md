@@ -110,13 +110,38 @@ const posts$ = Rx.Observable.from(posts);
 - For Set (Array have any type of data)
 
 ```sh
-const set = new Set(['Hello', 44, {title: "Hi Thangadurai!"}])
+const set = new Set(['Hello', 44, {title: "Hi Thangadurai!"}]);
 const set$ = Rx.Observable.from(set);
 ```
 
 - For Map (Set of key,value pair)
 
 ```sh
-const map = new Map([[1,2], [2,3], [3,4]])
+const map = new Map([[1,2], [2,3], [3,4]]);
 const map$ = Rx.Observable.from(map);
+```
+
+### Creating observables from scratch
+
+```sh
+const source$ = new Rx.Observable(observer => {
+  console.log("Creating Observable");
+
+  observer.next("Hi Team");
+  observer.next("Test Next");
+  
+  observer.error(new Error("Error Occured!"));
+
+  setTimeout(() => {
+    observer.next("After timeout of 3 seconds!")
+    observer.complete();
+  }, 3000);
+});
+source$
+.catch(err => Rx.Observable.of(err))
+.subscribe(
+  x => console.log(x),
+  err => console.log(err),
+  () => console.log("completed")
+);
 ```
