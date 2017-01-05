@@ -44,7 +44,7 @@ $ npm start
 - We can interact with data streams as any regular array
 
 <p align="center">
-  <img width="400" alt="Stream" src="./img/observables.png">
+  <img width="600" alt="Stream" src="./img/observables.png">
 </p>
 
 ### Reactive Extension/ReactiveX
@@ -56,4 +56,25 @@ $ npm start
 ## Covered Details
 
 - Examining data streams from events
-- Creating observables from array like objects.
+- Creating observables from array like objects
+- Creating observables from scratch
+- Filtering & Transforming observables
+- Promise to observables
+- Many helpful operators
+- Error handling
+
+### Examining data streams from events
+
+- For button, click events
+
+```sh
+const btn = $('#btn');
+const btnStream$ = Rx.Observable.fromEvent(btn, 'click');
+btnStream$.subscribe(
+  (value) => console.log(value),
+  (err) => console.log(err),
+  (completed) => console.log(completed)
+);
+```
+
+- Try the same for input field also 
