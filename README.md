@@ -19,6 +19,8 @@ $ npm start
 
 ## RxJS Notes
 
+[Thanks to RxJS Crash Course.](https://www.youtube.com/watch?v=ei7FsoXKPl0) 
+
 ### Reactive Programming
 
 - Programming paradigm that works with asynchronous data streams
@@ -69,12 +71,52 @@ $ npm start
 
 ```sh
 const btn = $('#btn');
-const btnStream$ = Rx.Observable.fromEvent(btn, 'click');
-btnStream$.subscribe(
+const btn$ = Rx.Observable.fromEvent(btn, 'click');
+btn$.subscribe(
   (value) => console.log(value),
   (err) => console.log(err),
   (completed) => console.log(completed)
 );
 ```
 
-- Try the same for input field also 
+- Try the same for input field, mousemove over the document
+
+### Creating observables from array like objects
+
+- For Array
+
+```sh
+const numbers = [10, 20, 30, 40, 50];
+const numbers$ = Rx.Observable.from(numbers);
+numbers$.subscribe(
+  (value) => console.log(value),
+  (err) => console.log(err),
+  (completed) => console.log(completed)
+);
+```
+
+- For Array like Objects
+
+```sh
+const posts = [
+  {title: "Post 1", body: "Post body 1"},
+  {title: "Post 2", body: "Post body 2"},
+  {title: "Post 3", body: "Post body 3"},
+  {title: "Post 4", body: "Post body 4"}
+];
+const posts$ = Rx.Observable.from(posts);
+```
+
+- For Set (Array have any type of data)
+
+```sh
+const set = new Set(['Hello', 44, {title: "Hi Thangadurai!"}])
+const set$ = Rx.Observable.from(set);
+```
+
+- For Map (Set of key,value pair)
+
+```sh
+const map = new Map([[1,2], [2,3], [3,4]])
+const map$ = Rx.Observable.from(map);
+```
