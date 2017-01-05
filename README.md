@@ -145,3 +145,45 @@ source$
   () => console.log("completed")
 );
 ```
+
+### Promise to observables
+
+```sh
+const getUser = (username) => {
+  return $.ajax({
+    url: `https://api.github.com/users/${username}`,
+    dataType: 'jsonp'
+  }).promise();
+}
+const input = $('#btn');
+const input$ = Rx.Observable.fromEvent(input, 'keyup');
+const promise$ = Rx.Observable.fromPromise(getUser('thangaduraicse'));
+promise$.subscribe(
+  x => console.log(x),
+  err => console.log(err),
+  () => console.log("completed")
+);
+```
+
+### Interval, Timer, Range
+
+```sh
+Rx.Observable.interval(2000).take(5);
+Rx.Observable.timer(2000, 2000).take(5);
+Rx.Observable.range(100, 50);
+```
+
+### Map, Pluck, Merge, Concat, SwitchMap
+
+```sh
+  Rx.Observable.from(["hello", "test"])
+    .map(v => v.toUpperCase());
+  
+  const posts = [
+    {title: "Post 1", body: "Post body 1"},
+    {title: "Post 2", body: "Post body 2"},
+    {title: "Post 3", body: "Post body 3"},
+    {title: "Post 4", body: "Post body 4"}
+  ];
+  const posts$ = Rx.Observable.from(posts).pluck('title');
+```
