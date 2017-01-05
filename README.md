@@ -32,9 +32,8 @@ $ npm start
 
 - Sequence of ongoing events ordered in time that emits a value, error & completed
 
-<p align="left">
-  <img width="400" alt="Stream"
-    src="./img/stream.png">
+<p align="center">
+  <img width="400" alt="Stream" src="./img/stream.png">
 </p>
 
 ### Observables
@@ -42,12 +41,19 @@ $ npm start
 - Used to watch these streams & emit functions
 - Can be subscribed by an observer
 - Will constantly watching streams & update accordingly
-- Interact with data streams as any regular array
+- We can interact with data streams as any regular array
 
-### RX
+<p align="center">
+  <img width="400" alt="Stream" src="./img/observables.png">
+</p>
 
-- Asynchronous program by using observable sequence.
+### Reactive Extension/ReactiveX
+
+- Library for composing Asynchronous program by using observable sequence.
 - Provides a list of operators to filter, select, transform, combine & composable observables
 
 
+## Covered Details
 
+- Examining data streams from events
+- Creating observables from array like objects.
