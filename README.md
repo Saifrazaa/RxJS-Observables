@@ -23,7 +23,7 @@ $ npm start
 
 - Works with asynchronous data streams
 - Data streams can be created from many things,
--- UI Events
--- Http Request
--- File System
--- Array like Objects.
+  - UI Events
+  - Http Request
+  - File System
+  - Array like Objects.
